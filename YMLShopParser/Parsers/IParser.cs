@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YMLShopParser.Dto;
 
-namespace YMLParseStoreDeliver.Dto
+namespace YMLShopParser.Parsers
 {
-    internal class OfferDto
+    internal interface IParser
     {
+        List<OfferDto> Parse(string doc);
     }
 }

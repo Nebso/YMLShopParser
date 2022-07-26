@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLParseStoreDeliver.Parsers
+namespace YMLShopParser.Dao
 {
-    internal interface IParseable
+    internal class EfRepository : IOfferRepository
     {
-        void Parse(string doc);
+
     }
 }

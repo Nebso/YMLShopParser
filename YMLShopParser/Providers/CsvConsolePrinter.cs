@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLParseStoreDeliver.Models
+namespace YMLShopParser.Providers
 {
-    internal class ShopEntity
+    internal class CsvConsolePrinter : IProvider
     {
+        public void Provide() { }
     }
 }

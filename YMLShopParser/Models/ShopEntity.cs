@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLParseStoreDeliver.Dao
+namespace YMLShopParser.Models
 {
-    public interface IOfferRepository
+    internal class ShopEntity
     {
-
     }
 }

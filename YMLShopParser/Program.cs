@@ -1,4 +1,4 @@
-﻿using YMLParseStoreDeliver.Services;
+﻿using YMLShopParser.Services;
 class Program
 {
     private static ShopService? shopService;
@@ -18,12 +18,10 @@ class Program
         switch (args[1])
         {
             case "save":
-                shopService.Save(Convert.ToInt32(args[2]), args[3]);
-                Console.ReadKey();
+                shopService.Save(args[2], args[3]);
                 break;
             case "print":
-                shopService.Print(Convert.ToInt32(args[2]));
-                Console.ReadKey();
+                shopService.Print(args[2]);
                 break;
             default:
                 Console.WriteLine("Please enter a valid key such as \"-- save <shopId> <url>\" or \"-- print <shopId>\"");

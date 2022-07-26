@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLParseStoreDeliver.Models
+namespace YMLShopParser.Dto
 {
-    internal class Shop
+    public class OfferDto
     {
-        public int Id { get; set; }
+        public string? ShopId { get; set; }
         public string? Name { get; set; }
-
-
-
     }
 }

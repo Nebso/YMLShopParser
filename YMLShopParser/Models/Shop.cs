@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLParseStoreDeliver.Provider
+namespace YMLShopParser.Models
 {
-    internal interface IProvideable
+    internal class Shop
     {
-        public void Provide();
+        public int Id { get; set; }
+        public string? Name { get; set; }
+
+
+
     }
 }
