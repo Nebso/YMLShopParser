@@ -8,23 +8,34 @@ namespace YMLShopParser.Services
 {
     internal class HttpService
     {
+        private readonly HttpClient _httpClient;
+
         public HttpService()
         {
-            httpClient = new HttpClient();
+            _httpClient = new HttpClient();
         }
-
-        private readonly HttpClient httpClient;
-
-        public async Task<string> GetYml(string? url)
+         
+        public async Task<string> GetYmlAsync(string? url)
         {
-            if (url is null) throw new ArgumentNullException(nameof(url));  
-            Task<string> yml = httpClient.GetStringAsync(url);
+            if (url is null)
+            {
+                throw new ArgumentNullException(nameof(url));
+            }
+
+            Task<string> yml = _httpClient.GetStringAsync(url);
 
             while (!yml.IsCompleted)
             {
                 Console.Write("\rDownloading YML document...");
                 await Task.Delay(1000);                
             }
+
+            if (yml.Status == TaskStatus.Faulted)
+            {
+                throw new HttpRequestException("Download failed. Please verify correctness of provided URL or check your internet connection");
+            }                
+
+            Console.WriteLine("YML doc downloaded successfully");
             return await yml;
         }
 

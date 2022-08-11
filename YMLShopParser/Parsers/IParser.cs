@@ -7,8 +7,8 @@ using YMLShopParser.Dto;
 
 namespace YMLShopParser.Parsers
 {
-    internal interface IParser
+    public interface IParser
     {
-        List<OfferDto> Parse(string doc);
+        List<ShopDto> Parse(string doc);
     }
 }

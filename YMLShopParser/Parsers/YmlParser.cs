@@ -9,9 +9,15 @@ namespace YMLShopParser.Parsers
 {
     internal class YmlParser : IParser
     {
-        public List<OfferDto> Parse(string yml)
+        public List<ShopDto> Parse(string yml)
         {
-            return new List<OfferDto>();
+            var dto = new List<ShopDto>();
+            
+            foreach (var offer in yml)
+            {
+                dto.Add(yml, yml);
+            }
+            return dto;
         }
     }
 }

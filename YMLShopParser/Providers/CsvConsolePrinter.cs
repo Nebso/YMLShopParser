@@ -8,6 +8,9 @@ namespace YMLShopParser.Providers
 {
     internal class CsvConsolePrinter : IProvider
     {
-        public void Provide() { }
+        public void Provide()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

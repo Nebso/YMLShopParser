@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YMLShopParser.Providers
 {
-    internal interface IProvider
+    public interface IProvider
     {
         public void Provide();
     }
