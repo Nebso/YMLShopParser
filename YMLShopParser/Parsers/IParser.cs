@@ -9,6 +9,6 @@ namespace YMLShopParser.Parsers
 {
     public interface IParser
     {
-        List<ShopDto> Parse(string doc);
+        List<ShopOfferDto> Parse(string doc);
     }
 }

@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace YMLShopParser.Models
 {
-    internal class Shop
-    {
-        public int Id { get; set; }
+    public class Shop
+    { 
         public string? Name { get; set; }
-
-
-
+        public string? Url { get; set; }
     }
 }

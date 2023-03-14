@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLShopParser.Dao
+namespace YMLShopParser.Models
 {
-    internal class EfRepository : IOfferRepository
+    public class Offer
     {
-
+        public int Id { get; set; }
+        public string? Name { get; set; }    
     }
 }

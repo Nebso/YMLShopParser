@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YMLShopParser.Models
+namespace YMLShopParser.Services
 {
-    internal class ShopEntity
+    internal sealed class ArgsService
     {
+        
     }
 }

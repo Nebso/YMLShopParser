@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YMLShopParser.Services
 {
-    internal class HttpService
+    internal sealed class HttpService
     {
         private readonly HttpClient _httpClient;
 
@@ -30,12 +30,14 @@ namespace YMLShopParser.Services
                 await Task.Delay(1000);                
             }
 
-            if (yml.Status == TaskStatus.Faulted)
+            if (yml.Status is TaskStatus.Faulted)
             {
-                throw new HttpRequestException("Download failed. Please verify correctness of provided URL or check your internet connection");
+                throw new HttpRequestException("Download failed. Please verify the provided YML address or check your internet connection");
             }                
 
             Console.WriteLine("YML doc downloaded successfully");
+            _httpClient.Dispose();
+
             return await yml;
         }
 
