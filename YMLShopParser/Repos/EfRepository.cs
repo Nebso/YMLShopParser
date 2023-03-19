@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YMLShopParser.Dao;
 using YMLShopParser.Dto;
 using YMLShopParser.Models;
 
@@ -15,12 +16,24 @@ namespace YMLShopParser.Repos
             throw new NotImplementedException();
         }
 
-        public Shop FindShop(string name)
+        public ShopOffersDao GetShop(string name)
+        {
+            var shopOffersDao = new ShopOffersDao()
+            {
+                Shop = FindShop(name)
+            };
+
+            shopOffersDao.Offers = FindOffers(shopOffersDao.Shop);
+
+            return shopOffersDao;
+        }
+
+        private Shop FindShop(string name)
         {
             throw new NotImplementedException();
         }
 
-        public List<Offer> FindOffers(Shop shop)
+        private List<Offer> FindOffers(Shop shop)
         {
             throw new NotImplementedException();
         }

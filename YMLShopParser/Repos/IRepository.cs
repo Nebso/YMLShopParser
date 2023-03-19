@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YMLShopParser.Dao;
 using YMLShopParser.Dto;
 using YMLShopParser.Models;
 
@@ -12,8 +13,6 @@ namespace YMLShopParser.Repos
     {
         void SaveAll(List<ShopOfferDto> dtos);
 
-        Shop FindShop(string name);
-
-        List<Offer> FindOffers(Shop shop);
+        ShopOffersDao GetShop(string name);        
     }
 }
