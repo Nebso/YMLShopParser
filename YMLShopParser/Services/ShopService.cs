@@ -27,7 +27,7 @@ namespace YMLShopParser.Services
 
         public void Save(string url)
         {
-            List<ShopOfferDto> shopOffers = _http.GetOffers(url);
+            ShopOffersDto shopOffers = _http.GetOffers(url);
             _offerRepository.SaveAll(shopOffers);
         }
 

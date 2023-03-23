@@ -10,9 +10,9 @@ namespace YMLShopParser.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        public DataContext()
         {
-            Database.EnsureCreated();
+            Database.EnsureCreated();            
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

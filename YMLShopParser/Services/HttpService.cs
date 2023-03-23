@@ -19,7 +19,7 @@ namespace YMLShopParser.Services
             _parser = new YmlParser();
         }
 
-        internal List<ShopOfferDto> GetOffers(string url)
+        internal ShopOffersDto GetOffers(string url)
         {
             string yml = GetYmlAsync(url).ConfigureAwait(false).GetAwaiter().GetResult();
 

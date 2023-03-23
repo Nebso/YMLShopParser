@@ -11,7 +11,7 @@ namespace YMLShopParser.Repos
 {
     public interface IRepository
     {
-        void SaveAll(List<ShopOfferDto> dtos);
+        void SaveAll(ShopOffersDto dto);
 
         ShopOffersDao GetShop(string name);        
     }

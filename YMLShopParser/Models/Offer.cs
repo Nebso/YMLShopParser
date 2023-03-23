@@ -10,5 +10,6 @@ namespace YMLShopParser.Models
     {
         public int Id { get; set; }
         public string? Name { get; set; }    
+        public string? ShopName { get; set; }   
     }
 }
