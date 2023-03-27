@@ -11,7 +11,16 @@ namespace YMLShopParser.Providers
     {
         public void Provide(ShopOffersDao shop)
         {
-            throw new NotImplementedException();
+            var csv = new StringBuilder();
+
+            csv.AppendLine("id;name");
+          
+            foreach (var offer in shop.Offers!)
+            {
+                csv.AppendLine($"{offer.Id};{offer.Name}");
+            }
+
+            Console.WriteLine(csv.ToString());
         }
     }
 }

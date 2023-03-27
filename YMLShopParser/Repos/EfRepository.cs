@@ -32,7 +32,7 @@ namespace YMLShopParser.Repos
                 Shop = FindShop(name)
             };
 
-            shopOffersDao.Offers = FindOffers(shopOffersDao.Shop);
+            shopOffersDao.Offers = FindOffers(shopOffersDao.Shop!);
 
             return shopOffersDao;
         }
