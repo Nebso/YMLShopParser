@@ -10,20 +10,17 @@ using YMLShopParser.Providers;
 namespace YMLShopParser.Services
 {
     public sealed class ShopService
-    {
-        private static readonly ShopService instance = new();
+    {      
         private readonly HttpService _http;
         private readonly IRepository _offerRepository;
         private readonly IProvider _provider;
 
-        private ShopService()
+        public ShopService(HttpService http, IRepository repository, IProvider provider)
         {
-            _http = new HttpService();
-            _offerRepository = new EfRepository();
-            _provider = new CsvConsolePrinter();
-        }
-
-        public static ShopService Instance => instance;
+            _http = http;
+            _offerRepository = repository;
+            _provider = provider;
+        }       
 
         public void Save(string url)
         {
