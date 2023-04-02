@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YMLShopParser.Dao;
+using YMLShopParser.Models;
 
 namespace YMLShopParser.Providers
 {
     public interface IProvider
     {
-        void Provide(ShopOffersDao shop);
+        void Provide(Shop? shop);
     }
 }

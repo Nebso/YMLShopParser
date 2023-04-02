@@ -12,8 +12,8 @@ class Program
         using IHost host = Host.CreateDefaultBuilder(args)
             .ConfigureServices(services =>
                 services.AddSingleton<HttpService>()
-                    .AddSingleton<ArgsService>()
-                    .AddSingleton<ShopService>())
+                        .AddSingleton<ArgsService>()
+                        .AddSingleton<ShopService>())
         .Build();
 
         host.Run();

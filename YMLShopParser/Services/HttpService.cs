@@ -9,8 +9,7 @@ using YMLShopParser.Parsers;
 namespace YMLShopParser.Services
 {
     public sealed class HttpService
-    {
-        private readonly HttpClient? _httpClient;
+    {       
         private readonly IParser _parser;
 
         public HttpService()

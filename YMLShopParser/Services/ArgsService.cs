@@ -11,13 +11,10 @@ namespace YMLShopParser.Services
     public class ArgsService
     {
         private readonly string[] _args;
-
-        private readonly ShopService _shopService;
-
+    
         public ArgsService(string[] args)
         {
             _args = args;
-            _shopService = new ShopService(new HttpService(), new EfRepository(), new CsvConsolePrinter());
         }
 
         public void ParseArgs()

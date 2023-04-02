@@ -14,13 +14,15 @@ namespace YMLShopParser.Services
         private readonly HttpService _http;
         private readonly IRepository _offerRepository;
         private readonly IProvider _provider;
+        private readonly ArgsService _argsService;
 
-        public ShopService(HttpService http, IRepository repository, IProvider provider)
+        public ShopService(HttpService http, IRepository repository, IProvider provider, ArgsService argsService)
         {
             _http = http;
             _offerRepository = repository;
             _provider = provider;
-        }       
+            _argsService = argsService;
+        }
 
         public void Save(string url)
         {
