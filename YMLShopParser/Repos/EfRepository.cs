@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YMLShopParser.Dao;
 using YMLShopParser.Dto;
 using YMLShopParser.Models;
 using YMLShopParser.Data;
@@ -25,36 +24,12 @@ namespace YMLShopParser.Repos
             db.SaveChanges();
         }
 
-        public ShopOffersDao GetShop(string name)
-        {
-            var shopOffersDao = new ShopOffersDao()
-            {
-                Shop = FindShop(name)
-            };
-
-            shopOffersDao.Offers = FindOffers(shopOffersDao.Shop!);
-
-            return shopOffersDao;
-        }
-
-        private Shop? FindShop(string name)
+        public Shop? GetShop(string name)
         {
             using var db = new DataContext();
-
-            var shop = db.Shops.Find(name);
-
+            var shop = db.Shops.FirstOrDefault(s => s.Name == name);
+              
             return shop;
-        }
-
-        private List<Offer> FindOffers(Shop shop)
-        {
-            using var db = new DataContext();
-
-            var offers = from o in db.Offers
-                         where o.ShopName == shop.Name
-                         select o;
-
-            return offers.ToList();
-        }
+        }      
     }
 }

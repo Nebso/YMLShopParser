@@ -8,50 +8,31 @@ using YMLShopParser.Parsers;
 
 namespace YMLShopParser.Services
 {
-    internal sealed class HttpService
-    {
-        private readonly HttpClient _httpClient;
+    public sealed class HttpService
+    {       
         private readonly IParser _parser;
 
         public HttpService()
         {
-            _httpClient = new HttpClient();
             _parser = new YmlParser();
         }
 
         internal ShopOffersDto GetOffers(string url)
         {
-            string yml = GetYmlAsync(url).ConfigureAwait(false).GetAwaiter().GetResult();
+            string yml = GetYml(url);
 
             return _parser.Parse(yml);
         }
 
-        private async Task<string> GetYmlAsync(string? url)
+        private static string GetYml(string? url)
         {
-            if (url is null)
-            {
-                throw new ArgumentNullException(nameof(url));
-            }
+            if (url is null) throw new ArgumentNullException(nameof(url));
 
-            Task<string> yml = _httpClient.GetStringAsync(url);
-
-            while (!yml.IsCompleted)
-            {
-                Console.Write("\rDownloading YML document...");
-                await Task.Delay(1000);                
-            }
-
-            if (yml.Status is TaskStatus.Faulted)
-            {
-                throw new HttpRequestException("Download failed. Please verify the provided YML address or check your internet connection");
-            }                
-
+            using var client = new HttpClient();
+            var yml = client.GetStringAsync(url).ConfigureAwait(false).GetAwaiter().GetResult();     
             Console.WriteLine("YML doc downloaded successfully");
-            _httpClient.Dispose();
 
-            return await yml;
+            return yml;
         }
-
-
     }
 }

@@ -14,15 +14,16 @@ namespace YMLShopParser.Parsers
         public ShopOffersDto Parse(string yml)
         {           
             var root = XElement.Parse(yml);
+            var shop = root.Element("shop");
 
             var dto = new ShopOffersDto()
             {
-                ShopName = root.Element("shop")?.Element("name")?.Value,
-                ShopUrl = root.Element("shop")?.Element("url")?.Value
+                ShopName = shop?.Element("name")?.Value,
+                ShopUrl = shop?.Element("url")?.Value
             };
             
             var offers =
-                from offer in root.Element("shop")?.Element("offers")?.Elements("offer")
+                from offer in shop?.Element("offers")?.Elements("offer")
                 select new 
                 {                     
                     OfferId = Convert.ToInt32(offer?.Attribute("id")?.Value),
