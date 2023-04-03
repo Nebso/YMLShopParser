@@ -24,12 +24,9 @@ namespace YMLShopParser.Services
             return _parser.Parse(yml);
         }
 
-        private string GetYml(string? url)
+        private static string GetYml(string? url)
         {
-            if (url is null)
-            {
-                throw new ArgumentNullException(nameof(url));
-            }
+            if (url is null) throw new ArgumentNullException(nameof(url));
 
             using var client = new HttpClient();
             var yml = client.GetStringAsync(url).ConfigureAwait(false).GetAwaiter().GetResult();     

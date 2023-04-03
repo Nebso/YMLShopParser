@@ -10,27 +10,42 @@ using YMLShopParser.Providers;
 namespace YMLShopParser.Services
 {
     public sealed class ShopService
-    {      
-        private readonly HttpService _http;
+    {              
         private readonly IRepository _offerRepository;
         private readonly IProvider _provider;
-        private readonly ArgsService _argsService;
+        private readonly HttpService _http;
 
-        public ShopService(HttpService http, IRepository repository, IProvider provider, ArgsService argsService)
+        public ShopService()
         {
-            _http = http;
-            _offerRepository = repository;
-            _provider = provider;
-            _argsService = argsService;
+            _offerRepository = new EfRepository();
+            _provider = new CsvConsolePrinter();
+            _http = new HttpService();
         }
 
-        public void Save(string url)
+        public void Start(string[] args)
+        {
+            var command = ArgsService.ParseArgs(args);
+
+            switch (command)
+            {
+                case CliArgs.Save:
+                    Save(args[1]);
+                    break;
+                case CliArgs.Print:
+                    Print(args[1]);
+                    break;
+                case CliArgs.Default:
+                    return;
+            }
+        }
+
+        private void Save(string url)
         {
             ShopOffersDto shopOffers = _http.GetOffers(url);
             _offerRepository.SaveAll(shopOffers);
         }
 
-        public void Print(string shopName)
+        private void Print(string shopName)
         {
             var shop = _offerRepository.GetShop(shopName);
             _provider.Provide(shop);
